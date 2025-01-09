@@ -1,4 +1,4 @@
-package com.vw.ecommerce.OrderService.adapter.out.jpa;
+package com.vw.ecommerce.OrderService.adapter.out.jpa.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

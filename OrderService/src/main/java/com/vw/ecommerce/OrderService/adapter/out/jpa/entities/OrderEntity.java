@@ -1,4 +1,4 @@
-package com.vw.ecommerce.OrderService.adapter.out.jpa;
+package com.vw.ecommerce.OrderService.adapter.out.jpa.entities;
 
 import com.vw.ecommerce.OrderService.domain.Order;
 import com.vw.ecommerce.OrderService.domain.OrderStatus;
