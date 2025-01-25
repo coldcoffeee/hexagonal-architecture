@@ -1,13 +1,13 @@
-package com.vw.ecommerce.DiscoveryServer;
+package com.vw.ecommerce.UserService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DiscoveryServerApplication {
+public class UserServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DiscoveryServerApplication.class, args);
+		SpringApplication.run(UserServiceApplication.class, args);
 	}
 
 }

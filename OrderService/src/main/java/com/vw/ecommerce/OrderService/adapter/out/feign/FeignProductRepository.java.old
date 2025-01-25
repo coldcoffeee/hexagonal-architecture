@@ -1,0 +1,42 @@
+package com.vw.ecommerce.OrderService.adapter.out.feign;
+
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.vw.ecommerce.OrderService.application.out.ProductRepository;
+import com.vw.ecommerce.OrderService.domain.Product;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class FeignProductRepository implements ProductRepository {
+
+    private final ProductServiceFeignClient productServiceFeignClient;
+
+    @Override
+    public Optional<Product> getProductById(UUID productId) {
+        return Optional.ofNullable(productServiceFeignClient.getProductById(productId));
+    }
+
+    @Override
+    public void updateStock(UUID productId, int quantity) {
+        productServiceFeignClient.updateStock(productId, quantity);
+    }
+
+}
+
+@FeignClient(name = "product-service")
+interface ProductServiceFeignClient{
+
+    @PutMapping("/products/{productId}/stock")
+    void updateStock(@PathVariable("productId") UUID productId, @RequestParam("quantity") int quantity);
+    
+    @GetMapping("/products/{productId}")
+    Product getProductById(@PathVariable("productId") UUID productId);
+}

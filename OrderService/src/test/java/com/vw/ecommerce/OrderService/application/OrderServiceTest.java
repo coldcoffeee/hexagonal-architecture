@@ -47,8 +47,8 @@ public class OrderServiceTest {
         Order order = new Order();
         order.setOrderItems(Arrays.asList(orderItem1, orderItem2));
 
-        Product product1 = new Product(productId1.toString(), "Product 1", "Description 1", 100, 10);
-        Product product2 = new Product(productId2.toString(), "Product 2", "Description 2", 200, 12);
+        Product product1 = new Product(UUID.fromString(productId1.toString()), "Product 1", "Description 1", 100, 10);
+        Product product2 = new Product(UUID.fromString(productId2.toString()), "Product 2", "Description 2", 200, 12);
         when(productRepository.getProductById(productId1)).thenReturn(Optional.of(product1));
         when(productRepository.getProductById(productId2)).thenReturn(Optional.of(product2));
         when(orderRepository.saveOrder(order)).thenReturn(orderId);
@@ -79,7 +79,7 @@ public class OrderServiceTest {
         Order order = new Order();
         order.setOrderItems(Arrays.asList(orderItem));
 
-        Product product = new Product(productId.toString(), "Product 1", "Description", 100, 2);
+        Product product = new Product(UUID.fromString(productId.toString()), "Product 1", "Description", 100, 2);
         when(productRepository.getProductById(productId)).thenReturn(Optional.of(product));
 
         assertThrows(RuntimeException.class, () -> orderService.placeOrder(order));

@@ -54,6 +54,7 @@ public class OrderEntity {
         orderEntity.setStatus(order.getStatus());
         orderEntity.setOrderItems(order.getOrderItems().stream().map(OrderItemEntity::fromDomain).toList());
         orderEntity.setUserId(order.getUserId());
+        orderEntity.getOrderItems().forEach(item -> item.setOrder(orderEntity));
         return orderEntity;
     }
 }

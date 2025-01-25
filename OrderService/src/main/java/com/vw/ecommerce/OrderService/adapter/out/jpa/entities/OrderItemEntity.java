@@ -9,13 +9,23 @@ import java.util.UUID;
 
 import com.vw.ecommerce.OrderService.domain.OrderItem;
 
+import jakarta.persistence.*;
+
+@Entity(name = "order_items")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderItemEntity {
+    @Id
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.AUTO)
+    private UUID id;
     private UUID productId;
     private Integer quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private OrderEntity order;
 
     public UUID getProductId() {
         return productId;
@@ -30,8 +40,9 @@ public class OrderItemEntity {
     }
 
     public static OrderItemEntity fromDomain(OrderItem orderItem) {
-        OrderItemEntity orderItemEntity = new OrderItemEntity(orderItem.getProductId(), orderItem.getQuantity());
+        OrderItemEntity orderItemEntity = new OrderItemEntity();
+        orderItemEntity.setProductId(orderItem.getProductId());
+        orderItemEntity.setQuantity(orderItem.getQuantity());
         return orderItemEntity;
     }
-
 }

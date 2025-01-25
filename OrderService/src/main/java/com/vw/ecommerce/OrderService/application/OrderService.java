@@ -1,6 +1,7 @@
 package com.vw.ecommerce.OrderService.application;
 
-import com.vw.ecommerce.OrderService.application.in.OrderUsecase;
+import com.vw.ecommerce.OrderService.application.in.CreateAndGetOrderUsecase;
+import com.vw.ecommerce.OrderService.application.in.UpdateOrderStatusUseCase;
 import com.vw.ecommerce.OrderService.application.out.OrderRepository;
 import com.vw.ecommerce.OrderService.application.out.PaymentRepository;
 import com.vw.ecommerce.OrderService.application.out.ProductRepository;
@@ -13,7 +14,7 @@ import com.vw.ecommerce.OrderService.domain.Product;
 
 import java.util.UUID;
 
-public class OrderService implements OrderUsecase {
+public class OrderService implements CreateAndGetOrderUsecase, UpdateOrderStatusUseCase {
 
     // private final UserRepository userRepository;
     private final ProductRepository productRepository;
@@ -21,7 +22,7 @@ public class OrderService implements OrderUsecase {
     private final PaymentRepository paymentRepository;
 
     public OrderService(ProductRepository productRepository, OrderRepository orderRepository,PaymentRepository paymentRepository) {
-        // Canb e used in future to get user's address for integration with shipping service
+        // Can be used in future to get user's address for integration with shipping service
         // this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.orderRepository = orderRepository;

@@ -1,0 +1,32 @@
+package com.vw.ecommerce.OrderService.adapter.in.kafka;
+
+// import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vw.ecommerce.OrderService.adapter.in.kafka.dto.OrderStatusUpdateDTO;
+import com.vw.ecommerce.OrderService.application.in.UpdateOrderStatusUseCase;
+
+import lombok.AllArgsConstructor;
+
+import java.util.UUID;
+
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
+
+
+
+@Component
+@AllArgsConstructor
+public class OrderDetailsConsumer {
+
+    private final UpdateOrderStatusUseCase orderUsecase;
+
+    @KafkaListener(topics = "order-updates", groupId = "order-service")
+    public void consumeOrderUpdate(String message) {
+        // ObjectMapper objectMapper = new ObjectMapper();
+        // try {
+        //     OrderStatusUpdateDTO orderStatusUpdateDTO = objectMapper.readValue(message, OrderStatusUpdateDTO.class);
+        //     orderUsecase.updateOrderStatus(UUID.fromString(orderStatusUpdateDTO.getOrderId()), orderStatusUpdateDTO.getStatus());
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
+    }
+}

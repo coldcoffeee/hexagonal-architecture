@@ -5,14 +5,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+// import org.springframework.stereotype.Repository;
 
 import com.vw.ecommerce.OrderService.adapter.out.jpa.entities.OrderEntity;
 import com.vw.ecommerce.OrderService.application.out.OrderRepository;
 import com.vw.ecommerce.OrderService.domain.Order;
 import com.vw.ecommerce.OrderService.domain.OrderStatus;
 
-@Repository
+// @Repository
 public class JpaOrderRepository implements OrderRepository {
 
     private final OrderJpaRepository orderJpaRepository;
